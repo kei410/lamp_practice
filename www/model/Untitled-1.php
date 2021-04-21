@@ -1,10 +1,12 @@
 <?php
 // 下書き用ファイル
 
+
+
 // XSS対策
-//特殊文字をHTMLエンティティに変換する
-function entity_str($str) {
-    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+// 文字列を受け取り、特殊文字をHTMLエンティティに変換してから返す
+function h($str){
+  return htmlspecialchars($str,ENT_QUOTES,'UTF-8');
 }
 
 /**
@@ -30,6 +32,18 @@ function entity_assoc_array($assoc_array) {
   return $assoc_array;
 }
 
+
+function entity_str($str) {
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+
+function get_post($name){
+  if(isset($_POST[$name]) === true){
+    return $_POST[$name];
+  };
+  return '';
+}
 
 
 /**
@@ -73,6 +87,8 @@ function execute_query($db, $sql, $params = array()){
   }
   return false;
 }
+
+
 
 
 // PDO、商品ID、ステータスを受け取り、商品の公開ステータスを更新する
@@ -244,6 +260,41 @@ function execute_query($db, $sql, $params = array()){
     return false;
   }
 
+  function execute_query($db, $sql, $params = array()){
+      try{
+        $statement = $db->prepare($sql);
+        return $statement->execute($params);
+      } catch() {
+        set_error('更新に失敗しました。');
+      }
+
+function execute_query($db, $sql, $params = array()){
+    try{
+      $statment = $db->preapre($sql);
+      return $statement->execute($params);
+    }
+
+}
+      // PDOとユーザー名、パスワードを利用して、新規ユーザーのユーザー名とパスワードをデータベースに追加する
+function insert_user($db, $name, $password){
+  // 新規ユーザーのユーザー名とパスワードを追加するためのSQL文を構築する
+  $sql = "
+    INSERT INTO
+      users(name, password)
+    VALUES ('{$name}', '{$password}');
+  ";
+
+  return execute_query($db, $sql);
+}
+
+  }
+  function execute_query($db, $sql, $param = array()){
+      try{
+        $statement = $db->prepare($params);
+        return $statement->execute
+      }
+
+  }
 
 
 function execute_query($db, $sql, $param = array()){
