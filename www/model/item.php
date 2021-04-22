@@ -123,6 +123,8 @@ function update_item_status($db, $item_id, $status){
   return execute_query($db, $sql);
 }
 
+
+
 // PDO、商品ID、在庫数を受け取り、商品の在庫情報を更新する
 function update_item_stock($db, $item_id, $stock){
   $sql = "

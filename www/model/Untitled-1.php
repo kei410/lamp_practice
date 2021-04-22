@@ -69,6 +69,17 @@ function get_as_array($dbh, $sql) {
  
   return $rows;
 }
+
+function get_as_array($dbh, $sql) {
+    try {
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $rows = $stmt->fetchALL();
+    } catch() {
+      throw $e;
+    }
+
+}
 function get_as_array($dbh, $sql) {
     try {
       $stmt = $dbh->prepare($sql);
@@ -87,7 +98,12 @@ function execute_query($db, $sql, $params = array()){
   }
   return false;
 }
-
+$stmt = $dbh->prepare($sql);
+  $stmt->bindValue(1, $change_status,   PDO::PARAM_INT);  
+  $stmt->bindValue(2, $date,            PDO::PARAM_STR);  //日付は文字列なのでSTRにする
+  $stmt->bindValue(3, $item_id,         PDO::PARAM_INT); 
+  $stmt->execute();
+function execute_query
 
 
 
