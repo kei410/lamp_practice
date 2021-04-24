@@ -1,8 +1,16 @@
 <?php
+// ユーザー関連
+// 「汎用関数、データベース関連」の2つ
+
+
+// 汎用関数ファイルを読み込む
 require_once MODEL_PATH . 'functions.php';
+// データベースに関する関数ファイルを読み込む
 require_once MODEL_PATH . 'db.php';
 
+// PDOとユーザーIDを受け取り、usersテーブルから1件のユーザー情報を取得する
 function get_user($db, $user_id){
+  // $user_idを1件取得するSQL文を構築する
   $sql = "
     SELECT
       user_id, 
@@ -17,8 +25,10 @@ function get_user($db, $user_id){
   ";
 
   return fetch_query($db, $sql, array($user_id));
+
 }
 
+// PDOとユーザー名を受け取り、usersテーブルから1件のユーザー情報を取得する
 function get_user_by_name($db, $name){
   $sql = "
     SELECT
@@ -36,21 +46,31 @@ function get_user_by_name($db, $name){
   return fetch_query($db, $sql, array($name));
 }
 
+// PDO、ユーザー名、パスワードを利用してログイン処理
 function login_as($db, $name, $password){
+  // PDOとユーザー名からユーザーデータを取得する
   $user = get_user_by_name($db, $name);
+  // $userがFALSEまたは$userのパスワードが$passwordでない場合は、FALSEを返す
   if($user === false || $user['password'] !== $password){
     return false;
   }
+  // ユーザーIDのセッション情報を定義して、ユーザーデータを返す
+  // 第一引数がキーで、第二引数が値
   set_session('user_id', $user['user_id']);
   return $user;
 }
 
+// PDOを利用してログインしているユーザー情報を返す
 function get_login_user($db){
+  // ユーザーIDを利用して、セッションを取得する
   $login_user_id = get_session('user_id');
 
   return get_user($db, $login_user_id);
 }
 
+// PDOとユーザー名、パスワード、$password_confirmation（確認用パスワード）を利用して、
+// 新規登録するユーザーの情報を追加する関数を実行する
+// もしバリデーション処理に失敗したらFALSEを返す
 function regist_user($db, $name, $password, $password_confirmation) {
   if( is_valid_user($name, $password, $password_confirmation) === false){
     return false;
@@ -59,17 +79,23 @@ function regist_user($db, $name, $password, $password_confirmation) {
   return insert_user($db, $name, $password);
 }
 
+// ユーザーの種類が管理者(admin、admin)であれば TRUE、そうでなければ FALSEを返す
 function is_admin($user){
   return $user['type'] === USER_TYPE_ADMIN;
 }
 
+// ユーザー名、パスワード、 $password_confirmation(確認用パスワード)を受け取り、
+// バリデーション処理後のユーザー名とパスワードを返す
 function is_valid_user($name, $password, $password_confirmation){
-  // 短絡評価を避けるため一旦代入。
+  // 短絡評価を避けるために一旦代入する
   $is_valid_user_name = is_valid_user_name($name);
   $is_valid_password = is_valid_password($password, $password_confirmation);
   return $is_valid_user_name && $is_valid_password ;
 }
 
+// バリデーション処理
+// ユーザー名を受け取り、TRUEを返す
+// 文字数の条件を満たさない、半角英数字でない場合はFALSEを返す
 function is_valid_user_name($name) {
   $is_valid = true;
   if(is_valid_length($name, USER_NAME_LENGTH_MIN, USER_NAME_LENGTH_MAX) === false){
@@ -83,6 +109,9 @@ function is_valid_user_name($name) {
   return $is_valid;
 }
 
+// バリデーション処理
+// パスワードと$password_confirmationを受け取り、TRUEを返す
+// 文字数の条件を満たさない、半角英数字でない、パスワードがパスワード(確認用)と一致しない場合はFALSEを返す
 function is_valid_password($password, $password_confirmation){
   $is_valid = true;
   if(is_valid_length($password, USER_PASSWORD_LENGTH_MIN, USER_PASSWORD_LENGTH_MAX) === false){
@@ -100,7 +129,9 @@ function is_valid_password($password, $password_confirmation){
   return $is_valid;
 }
 
+// PDOとユーザー名、パスワードを利用して、新規ユーザーのユーザー名とパスワードをデータベースに追加する
 function insert_user($db, $name, $password){
+  // 新規ユーザーのユーザー名とパスワードを追加するためのSQL文を構築する
   $sql = "
     INSERT INTO
       users(name, password)
