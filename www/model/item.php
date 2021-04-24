@@ -22,10 +22,10 @@ function get_item($db, $item_id){
     FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
   ";
 
-  return fetch_query($db, $sql);
+  return fetch_query($db, $sql, array($item_id));
 }
 
 // $dbと$user_idを受け取り、itemsテーブルから商品情報を全件取得する
@@ -102,10 +102,10 @@ function insert_item($db, $name, $price, $stock, $filename, $status){
         image,
         status
       )
-    VALUES('{$name}', {$price}, {$stock}, '{$filename}', {$status_value});
+      VALUES(?, ?, ?, ?, ?);
   ";
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($name, $price, $stock, $filename, $status_value));
 }
 
 // PDO、商品ID、ステータスを受け取り、商品の公開ステータスを更新する
@@ -114,13 +114,13 @@ function update_item_status($db, $item_id, $status){
     UPDATE
       items
     SET
-      status = {$status}
+      status = ?
     WHERE
-      item_id = {$item_id}
+      item_id = ? 
     LIMIT 1
   ";
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($status, $item_id));
 }
 
 
@@ -131,14 +131,15 @@ function update_item_stock($db, $item_id, $stock){
     UPDATE
       items
     SET
-      stock = {$stock}
+      stock = ?      
     WHERE
-      item_id = {$item_id}
+      item_id = ?   
     LIMIT 1
   ";
-  
-  return execute_query($db, $sql);
+
+  return execute_query($db, $sql , array($stock, $item_id));
 }
+
 
 // PDO、商品IDを受け取り、商品削除のトランザクション処理を実行する
 // トランザクション処理 (商品情報の削除と在庫情報を削除)に成功したら、TRUEを返して
@@ -164,11 +165,11 @@ function delete_item($db, $item_id){
     DELETE FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($item_id));
 }
 
 
