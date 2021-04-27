@@ -218,3 +218,8 @@ function is_valid_csrf_token($token){
   return $token === get_session('csrf_token');
   // $_SESSION['csrf_token']; 
 }
+
+// リクエストメソッドを取得
+function get_request_method(){
+  return $_SERVER['REQUEST_METHOD'];
+}

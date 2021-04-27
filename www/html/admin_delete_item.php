@@ -41,6 +41,10 @@ if(destroy_item($db, $item_id) === true){
   set_error('商品削除に失敗しました。');
 }
 
-
-
 redirect_to(ADMIN_URL);
+
+
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 

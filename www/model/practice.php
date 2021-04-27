@@ -1,6 +1,17 @@
 <?php
 // 下書き用のファイル
 
+
+// POSTで飛んでくるページに以下の処理を追加する。
+// PHPファイル（HTMLディレクトリ）
+/////////////////////////////////////////
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
+
+
 // CSRF対策
 // 1. トークンの生成
 // トークンは合言葉や鍵の意味
@@ -8,7 +19,7 @@ function get_csrf_token(){
   // get_random_string()はユーザー定義関数。
   $token = get_random_string(30);
   // set_session()はユーザー定義関数。
-  // CSRFのトークンを生成してセッションに格納する
+  // CSRFのトークンを生成してセッションに格納したものを返す
   set_session('csrf_token', $token);
   // $_SESSION['csrf_token'] = $token; 
   return $token;
@@ -29,6 +40,48 @@ function get_random_string($length = 20){
   return substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, $length);
 }
 
+// POSTで飛んでくるページに以下の処理を追加する。
+/////////////////////////////////////////
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
+// リクエストメソッドを取得
+function get_request_method(){
+  return $_SERVER['REQUEST_METHOD'];
+}
+/////////////////////////////////////////
+
+// 各種phpファイルに以下の処理を追加する? 最初のところ
+if (get_session('csrf_token') === get_post('csrf_token')) {
+
+}
+
+
+function is_valid_upload_image($image){
+  // ファイルの形式が異なる場合はエラーメッセージを表示してFALSEを返す
+  if(is_uploaded_file($image['tmp_name']) === false){
+    set_error('ファイル形式が不正です。');
+    return false;
+  }
+
+  if(update_item_stock($db, $item_id, $stock)){
+    set_message('在庫数を変更しました。');
+  } else {
+    set_error('在庫数の変更に失敗しました。');
+  }
+  
+  redirect_to(ADMIN_URL);
+/* get_request_method() === 'POST' &&  */
+
+// リクエストメソッドを取得
+/* function get_request_method(){
+  return $_SERVER['REQUEST_METHOD'];
+} */
+
+
+//////////////
 // CSRF対策   bbs.phpから使う部分だけを抜粋
 
 // X-Frame-Options は HTTP のレスポンスヘッダーで、ブラウザーがページを <frame> , <iframe> , <embed> , <object> の中に
@@ -36,18 +89,24 @@ function get_random_string($length = 20){
 header('X-FRAME-OPTIONS: DENY');
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['token']===$_POST['token']) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['token'] === $_POST['token']) {
+
 
 $token = substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, 20);
-$_SESSION['token']=$token;
+$_SESSION['token'] = $token;
 
 <form method="post">
        <label>名前：<input type="text" name="my_name"></label>
-       <label>一言：<input type="text" name="comment"></label>
        <input type='hidden' name='token' value='<?php print $token;?>'>
        <input type="submit" name="submit" value="送信">
 </form>
+//////////////
 
+
+
+function get_random_string($length = 20){
+  return substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, $length);
+}
 
 // セッションのキーを指定して値を取り出す
 // セットされていないときは空文字を返す
@@ -65,6 +124,10 @@ function get_session($name){
 function set_session($name, $value){
   $_SESSION[$name] = $value;
 }
+
+
+
+
 
 // クエリを実行する
 // execute()メソッドの引数に配列を渡すと、それらを全て

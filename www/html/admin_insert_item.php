@@ -51,3 +51,9 @@ if(regist_item($db, $name, $price, $stock, $status, $image)){
 }
 
 redirect_to(ADMIN_URL);
+
+
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
