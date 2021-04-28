@@ -40,3 +40,8 @@ if ($user['type'] === USER_TYPE_ADMIN){
   redirect_to(ADMIN_URL);
 }
 redirect_to(HOME_URL);
+
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 

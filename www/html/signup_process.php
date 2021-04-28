@@ -25,6 +25,7 @@ $password_confirmation = get_post('password_confirmation');
 // PDOを取得して、データベースに接続する
 $db = get_db_connect();
 
+
 // 新規ユーザー登録処理を行う
 // 会員登録に失敗した場合は会員登録ページに遷移する
 try{
@@ -42,3 +43,9 @@ try{
 set_message('ユーザー登録が完了しました。');
 login_as($db, $name, $password);
 redirect_to(HOME_URL);
+
+
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 

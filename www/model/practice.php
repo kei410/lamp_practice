@@ -2,14 +2,21 @@
 // 下書き用のファイル
 
 
-// POSTで飛んでくるページに以下の処理を追加する。
-// PHPファイル（HTMLディレクトリ）
+// POSTで飛んでくるページだけに以下の処理を追加する。
+// PHPファイル（HTMLディレクトリ内）
+// get_post();
 /////////////////////////////////////////
+
 if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
   set_error('不正なリクエストです。');
   redirect_to(LOGIN_URL);
 } 
 
+// 1つのフォームタグに1つ入れる  viewのページ
+
+<input type="hidden" name='csrf_token' value="<?php print $token;?>">
+
+/////////////////////////////////////////
 
 
 // CSRF対策
@@ -40,7 +47,7 @@ function get_random_string($length = 20){
   return substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, $length);
 }
 
-// POSTで飛んでくるページに以下の処理を追加する。
+// POSTで飛んでくるページだけに以下の処理を追加する。
 /////////////////////////////////////////
 if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
   set_error('不正なリクエストです。');
@@ -51,6 +58,7 @@ if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
 function get_request_method(){
   return $_SERVER['REQUEST_METHOD'];
 }
+
 /////////////////////////////////////////
 
 // 各種phpファイルに以下の処理を追加する? 最初のところ
