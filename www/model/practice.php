@@ -1,7 +1,6 @@
 <?php
 // 下書き用のファイル
 
-
 // POSTで飛んでくるページだけに以下の処理を追加する。
 // PHPファイル（HTMLディレクトリ内）
 // get_post();
@@ -17,8 +16,6 @@ if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
 <input type="hidden" name='csrf_token' value="<?php print $token;?>">
 
 /////////////////////////////////////////
-
-
 // CSRF対策
 // 1. トークンの生成
 // トークンは合言葉や鍵の意味
@@ -81,12 +78,6 @@ function is_valid_upload_image($image){
   }
   
   redirect_to(ADMIN_URL);
-/* get_request_method() === 'POST' &&  */
-
-// リクエストメソッドを取得
-/* function get_request_method(){
-  return $_SERVER['REQUEST_METHOD'];
-} */
 
 
 //////////////
@@ -97,7 +88,7 @@ function is_valid_upload_image($image){
 header('X-FRAME-OPTIONS: DENY');
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['token'] === $_POST['token']) {
+/* if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['token'] === $_POST['token']) { */
 
 
 $token = substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, 20);
@@ -132,10 +123,6 @@ function get_session($name){
 function set_session($name, $value){
   $_SESSION[$name] = $value;
 }
-
-
-
-
 
 // クエリを実行する
 // execute()メソッドの引数に配列を渡すと、それらを全て

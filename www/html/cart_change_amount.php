@@ -41,3 +41,9 @@ if(update_cart_amount($db, $cart_id, $amount)){
 }
 // カートページに移動する
 redirect_to(CART_URL);
+
+
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
