@@ -13,6 +13,12 @@ require_once MODEL_PATH . 'item.php';
 // セッションスタート
 session_start();
 
+// セッション関数の直後に記述する
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
 // もしログインされていなければ、
 if(is_logined() === false){
   // ログインページに移動する
@@ -45,7 +51,3 @@ if(update_item_stock($db, $item_id, $stock)){
 redirect_to(ADMIN_URL);
 
 
-if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
-  set_error('不正なリクエストです。');
-  redirect_to(LOGIN_URL);
-} 

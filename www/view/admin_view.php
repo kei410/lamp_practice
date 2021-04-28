@@ -71,9 +71,9 @@
                   <!-- sqlインジェクション確認のためあえてtext -->
                   <input  type="text" name="stock" value="<?php print h($item['stock']); ?>">
                   個 <!-- $item['stock'] -->
-                  <input type="hidden" name='csrf_token' value="<?php print $token;?>">
                 </div>
                 <input type="submit" value="変更" class="btn btn-secondary">
+                <input type="hidden" name='csrf_token' value="<?php print $token;?>">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
               </form>
             </td>

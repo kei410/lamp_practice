@@ -13,6 +13,12 @@ require_once MODEL_PATH . 'item.php';
 // セッションを利用するのでセッション関数を記述する
 session_start();
 
+// セッション関数の直後に書く
+if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
 // もしログインされていなければ、
 if(is_logined() === false){
   // ログインページに移動する
@@ -44,7 +50,3 @@ if(destroy_item($db, $item_id) === true){
 redirect_to(ADMIN_URL);
 
 
-if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
-  set_error('不正なリクエストです。');
-  redirect_to(LOGIN_URL);
-} 
