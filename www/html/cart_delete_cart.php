@@ -16,6 +16,12 @@ require_once MODEL_PATH . 'cart.php';
 // セッション開始 (最初に記述する)
 session_start();
 
+
+if (is_valid_csrf_token(get_post('csrf_token')) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
 // もしログインされていなければ、
 if(is_logined() === false){
   // ログインページに移動する
@@ -41,3 +47,4 @@ if(delete_cart($db, $cart_id)){
 }
 // カートページに移動する
 redirect_to(CART_URL);
+

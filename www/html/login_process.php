@@ -11,6 +11,12 @@ require_once MODEL_PATH . 'user.php';
  // セッションスタート (必ず最初に記述する)
 session_start();
 
+// falseにする
+if (is_valid_csrf_token(get_post('csrf_token')) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
 // ログインされていれば、トップページに遷移する
 if(is_logined() === true){
   redirect_to(HOME_URL);

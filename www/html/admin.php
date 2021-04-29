@@ -13,9 +13,14 @@ require_once MODEL_PATH . 'user.php';
 // itemデータに関する関数ファイルを読み込む
 require_once MODEL_PATH . 'item.php';
 
+/* header('X-FRAME-OPTIONS: DENY'); */
 // セッションを使うので、session_start関数を記述する
 // (セッションはページをまたいで情報を共有できる仕組み)
 session_start();
+
+$token = get_csrf_token();
+
+/* $csrf_token = get_post('csrf_token'); */
 
 // もしログインしていなければ、
 if(is_logined() === false){
@@ -38,6 +43,14 @@ if(is_admin($user) === false){
 // 変数itemsは変数dbを受け取ったget_all_items関数を呼び出す
 // PDOを利用して、商品一覧情報を取得する
 $items = get_all_items($db);
+
+// admin.phpはPOSTされてこないので以下の処理は不要
+/* if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
+ */
 
 // ファイルからのコードが既に読み込まれている場合は，再度読み込まれない
 // 読み込みエラー時は警告だけで処理が続行する (include_once)

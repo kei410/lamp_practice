@@ -11,6 +11,11 @@ require_once MODEL_PATH . 'user.php';
 // セッション開始 (最初に書いておく)
 session_start();
 
+if (is_valid_csrf_token(get_post('csrf_token')) === false || get_request_method() !== 'POST') {
+  set_error('不正なリクエストです。');
+  redirect_to(LOGIN_URL);
+} 
+
 // もしログインされているなら、会員トップページに移動する
 if(is_logined() === true){
   redirect_to(HOME_URL);
@@ -24,6 +29,7 @@ $password_confirmation = get_post('password_confirmation');
 
 // PDOを取得して、データベースに接続する
 $db = get_db_connect();
+
 
 // 新規ユーザー登録処理を行う
 // 会員登録に失敗した場合は会員登録ページに遷移する

@@ -43,10 +43,9 @@
           <option value="close">非公開</option>
         </select>
       </div>
-      
+      <input type="hidden" name='csrf_token' value="<?php print $token; ?>">
       <input type="submit" value="商品追加" class="btn btn-primary">
     </form>
-
 
     <?php if(count($items) > 0){ ?>
       <table class="table table-bordered text-center">
@@ -72,6 +71,7 @@
                   <input  type="text" name="stock" value="<?php print h($item['stock']); ?>">
                   個 <!-- $item['stock'] -->
                 </div>
+                <input type="hidden" name='csrf_token' value="<?php print $token;?>">
                 <input type="submit" value="変更" class="btn btn-secondary">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
               </form>
@@ -85,11 +85,13 @@
                 <?php } else { ?>
                   <input type="submit" value="非公開 → 公開" class="btn btn-secondary">
                   <input type="hidden" name="changes_to" value="open">
-                <?php } ?>
+                <?php } ?>             
+                <input type="hidden" name='csrf_token' value="<?php print $token;?>">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
               </form>
 
               <form method="post" action="admin_delete_item.php">
+                <input type="hidden" name='csrf_token' value="<?php print $token;?>">
                 <input type="submit" value="削除" class="btn btn-danger delete">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
               </form>

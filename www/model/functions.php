@@ -193,3 +193,34 @@ function h($str){
   return htmlspecialchars($str,ENT_QUOTES,'UTF-8');
 }
 
+
+// CSRF対策 (トークン)
+// 1. トークンの生成
+// トークンは合言葉や鍵の意味
+function get_csrf_token(){
+  // get_random_string()はユーザー定義関数。
+  $token = get_random_string(30);
+  // set_session()はユーザー定義関数。
+  // CSRFのトークンを生成してセッションに格納する
+  /* dd($token); */
+  set_session('csrf_token', $token);
+  // $_SESSION['csrf_token'] = $token; 
+  return $token;
+}
+
+
+// 2.トークンのチェック
+function is_valid_csrf_token($token){
+  if($token === '') {
+    return false;
+  }
+   // 引数に与えられたもの$tokenと$_SESSION[‘csrf_token’]とを比較して
+  // 合っていればtrue、そうでなければfalseを返す
+  return $token === get_session('csrf_token');
+  // $_SESSION['csrf_token']; 
+}
+
+// リクエストメソッドを取得
+function get_request_method(){
+  return $_SERVER['REQUEST_METHOD'];
+}

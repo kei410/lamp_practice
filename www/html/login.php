@@ -7,6 +7,8 @@ require_once MODEL_PATH . 'functions.php';
 // セッションスタート (必ず最初に記述する)
 session_start();
 
+$token = get_csrf_token();
+
 // もしログインされていれば、会員トップページに移動する
 if(is_logined() === true){
   redirect_to(HOME_URL);
