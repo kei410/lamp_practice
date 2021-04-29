@@ -47,7 +47,6 @@
       <input type="submit" value="商品追加" class="btn btn-primary">
     </form>
 
-
     <?php if(count($items) > 0){ ?>
       <table class="table table-bordered text-center">
         <thead class="thead-light">

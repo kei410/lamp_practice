@@ -14,6 +14,9 @@ if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
 // controllerに追加する
 $token = get_csrf_token();
 
+
+get_post('csrf_token')
+
 // 1つのフォームタグに1つ入れる  viewのページ
 
 <input type="hidden" name='csrf_token' value="<?php print $token;?>">
