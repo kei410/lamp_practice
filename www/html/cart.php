@@ -15,6 +15,8 @@ require_once MODEL_PATH . 'cart.php';
 // セッションスタート (これは必ず最初に書く)
 session_start();
 
+$token = get_csrf_token();
+
 // もしログインされていなければ、
 if(is_logined() === false){
   // ログインページに移動する

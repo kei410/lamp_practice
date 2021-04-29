@@ -13,6 +13,9 @@ require_once MODEL_PATH . 'item.php';
 // セッションスタート (最初に記述する)
 session_start();
 
+// controllerに追加する
+$token = get_csrf_token();
+
 // ログインされていなければ、ログインページに移動する
 if(is_logined() === false){
   redirect_to(LOGIN_URL);
