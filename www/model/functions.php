@@ -202,6 +202,7 @@ function get_csrf_token(){
   $token = get_random_string(30);
   // set_session()はユーザー定義関数。
   // CSRFのトークンを生成してセッションに格納する
+  /* dd($token); */
   set_session('csrf_token', $token);
   // $_SESSION['csrf_token'] = $token; 
   return $token;

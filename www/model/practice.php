@@ -11,6 +11,9 @@ if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
   redirect_to(LOGIN_URL);
 } 
 
+// controllerに追加する
+$token = get_csrf_token();
+
 // 1つのフォームタグに1つ入れる  viewのページ
 
 <input type="hidden" name='csrf_token' value="<?php print $token;?>">
@@ -38,6 +41,7 @@ function is_valid_csrf_token($token){
   // 合っていればtrue、そうでなければfalseを返す
   return $token === get_session('csrf_token');
   // $_SESSION['csrf_token']; 
+  // $token=$_POST["csrf_token"]?
 }
 
 function get_random_string($length = 20){
@@ -100,12 +104,6 @@ $_SESSION['token'] = $token;
        <input type="submit" name="submit" value="送信">
 </form>
 //////////////
-
-
-
-function get_random_string($length = 20){
-  return substr(base_convert(hash('sha256', uniqid()), 16, 36), 0, $length);
-}
 
 // セッションのキーを指定して値を取り出す
 // セットされていないときは空文字を返す

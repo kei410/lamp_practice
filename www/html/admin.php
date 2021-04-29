@@ -18,6 +18,10 @@ require_once MODEL_PATH . 'item.php';
 // (セッションはページをまたいで情報を共有できる仕組み)
 session_start();
 
+$token = get_csrf_token();
+
+/* $csrf_token = get_post('csrf_token'); */
+
 // もしログインしていなければ、
 if(is_logined() === false){
 // ログインページに移動する

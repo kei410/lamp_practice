@@ -14,7 +14,7 @@ require_once MODEL_PATH . 'item.php';
 session_start();
 
 // セッション関数の直後に記述する
-if (is_valid_csrf_token($token) === false || get_request_method() !== 'POST') {
+if (is_valid_csrf_token(get_post('csrf_token')) === false || get_request_method() !== 'POST') {
   set_error('不正なリクエストです。');
   redirect_to(LOGIN_URL);
 } 
