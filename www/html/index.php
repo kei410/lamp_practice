@@ -10,6 +10,8 @@ require_once MODEL_PATH . 'user.php';
 // itemデータに関する関数ファイルを読み込み
 require_once MODEL_PATH . 'item.php';
 
+require_once MODEL_PATH . 'histories.php';
+
 // セッションスタート (最初に記述する)
 session_start();
 
@@ -30,5 +32,8 @@ $user = get_login_user($db);
 // PDOを利用して、公開ステータスの商品情報を取得する
 $items = get_open_items($db);
 
+// ランキング表示
+/* $ranking = get_ranking($db, $user_id);
+ */
 // viewの読み込み
 include_once VIEW_PATH . 'index_view.php';

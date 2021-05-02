@@ -121,7 +121,68 @@ function purchase_carts($db, $carts){
   if(validate_cart_purchase($carts) === false){
     return false;
   }
-  // foreachで1商品ずつ取り出し、該当する在庫数を減算する
+
+// 購入後に、カートの中身を削除して在庫変更と購入履歴・購入明細にデータを挿入する
+// トランザクション処理
+$db->beginTransaction();
+try {
+   insert_history($db, $carts[0]['user_id']);
+   $order_id = $db->lastInsertId();
+// foreachで1商品ずつ取り出し、該当する在庫数を減算する
+   foreach($carts as $cart){ 
+    insert_detail($db, $order_id, $cart['item_id'], $cart['price'], $cart['amount']);   
+    if(update_item_stock($db, $cart['item_id'], $cart['stock'] - $cart['amount']) === false){
+        set_error($cart['name'] . 'の購入に失敗しました。');
+      }
+   }
+    delete_user_carts($db, $carts[0]['user_id']);
+    $db->commit();
+} catch(PDOException $e) {
+  $db->rollback();
+  throw $e;
+  }
+}
+
+
+// 購入履歴テーブルにINSERTする
+function insert_history($db, $user_id){
+// 現在日時を取得する
+/* $order_date = date('Y-m-d H:i:s'); */
+  $sql = "
+    INSERT INTO
+      histories(
+        user_id,
+        order_date
+      )
+    VALUES(?, now())
+  ";
+  return execute_query($db, $sql, array($user_id));
+}
+
+/* INSERT INTO test_table
+    (id, context, created_at, updated_at)
+VALUES
+    (1, 'test', NOW()); */
+
+
+// 購入明細テーブルにINSERTする
+function insert_detail($db, $order_id, $item_id, $price, $amount){
+  $sql = "
+    INSERT INTO
+      details(
+        order_id,
+        item_id,
+        price,
+        amount
+      )
+    VALUES(?, ?, ?, ?)
+  ";
+  return execute_query($db, $sql, array($order_id, $item_id, $price, $amount));
+}
+
+
+// 購入履歴と購入明細を追加する前
+/* try {
   foreach($carts as $cart){
     // 在庫テーブルを更新する
     // カートの数量を使って商品の在庫数を減算する
@@ -135,7 +196,8 @@ function purchase_carts($db, $carts){
   }
   
   delete_user_carts($db, $carts[0]['user_id']);
-}
+} */
+
 
 // PDO、ユーザーIDを利用して、cartsテーブルのデータを削除する
 function delete_user_carts($db, $user_id){
