@@ -33,7 +33,7 @@ $user = get_login_user($db);
 $items = get_open_items($db);
 
 // ランキング表示
-/* $ranking = get_ranking($db, $user_id);
- */
+$ranking = get_ranking($db); 
+
 // viewの読み込み
 include_once VIEW_PATH . 'index_view.php';

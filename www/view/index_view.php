@@ -45,30 +45,26 @@
     </div>
   </div>
 
-  <!-- <table>
+  <table>
+  <h2>人気ランキング</h2>
       <thead>
         <tr>
-          <th>順位</th>
+          <!-- <th>順位</th> -->
+          <th>商品番号</th>
           <th>商品名</th>
           <th>価格</th>
         </tr>
       </thead>
       <tbody>
-      <?php foreach($ranking as $item){ ?>
+      <?php foreach($ranking as $rank){ ?>
         <tr>
-          <td><?php print($history['order_id']); ?></td>
-          <td><?php print($history['order_date']); ?></td>
-          <td><?php print($history['price']); ?></td>
-          <td>
-            <form method="post" action="detail.php">
-              <input type="submit" value="購入明細を表示">
-              <input type="hidden" name="order_id" value="<?php print($history['order_id']); ?>">
-            </form>
-          </td>
+          <td><?php print($rank['item_id']); ?></td>
+          <td><?php print($rank['name']); ?></td>
+          <td><?php print($rank['price']); ?></td>
         </tr>
       <?php } ?>
       </tbody>
-    </table> -->
+  </table>
 
 </body>
 </html>
