@@ -100,30 +100,36 @@ function get_detail($db, $order_id){
 /* 購入数の多い順に1位から3位の商品を表示させる */
 /* group byをうまく使って詳細テーブルを集計してランキング表示するselect分を作る */
 
+/* グルーピングする項目はこの場合基本１つでいい*/
+/*売り上げの合計ではなくて売れた個数を集計すべきで、その集計した個数で並び替えるべき*/
+
 
 // 3. ランキング機能
-/* function get_ranking($db, $user_id){
+function get_ranking($db){
   $sql = "
     SELECT
-      details.item_id,
-      details.price,
-      details.amount
-      SUM(details.price * details.amount) AS subtotal,
-      items.name
+      items.item_id,
+      SUM(details.amount) AS rank,
+      items.name,
+      items.price
     FROM
-      details
-    JOIN
       items
+    JOIN
+      details
+    ON
+      details.item_id = items.item_id
     GROUP BY
-      details.item_id,
-      details.price,
-      details.amount,
-      items.name
+      items.item_id
     ORDER BY
-      amount
+      SUM(details.amount)
     LIMIT 3
     ";
+    
+    return fetch_all_query($db, $sql);
 
-    return fetch_all_query($db, $sql, array($user_id));
+}
 
-} */
+
+/* details.amount, */
+/* SUM(details.price * details.amount) AS rank, */
+
