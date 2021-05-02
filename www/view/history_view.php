@@ -9,7 +9,7 @@
     <h1>購入履歴</h1>
 
     <?php include VIEW_PATH. 'templates/messages.php'; ?>
-   
+    
     <?php if(count($histories) > 0) { ?>
     <table>
       <thead>

@@ -44,6 +44,31 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- <table>
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>商品名</th>
+          <th>価格</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach($ranking as $item){ ?>
+        <tr>
+          <td><?php print($history['order_id']); ?></td>
+          <td><?php print($history['order_date']); ?></td>
+          <td><?php print($history['price']); ?></td>
+          <td>
+            <form method="post" action="detail.php">
+              <input type="submit" value="購入明細を表示">
+              <input type="hidden" name="order_id" value="<?php print($history['order_id']); ?>">
+            </form>
+          </td>
+        </tr>
+      <?php } ?>
+      </tbody>
+    </table> -->
+
 </body>
 </html>
