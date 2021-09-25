@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>退勤打刻</title>
+  <style>
+  .realtime {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  </style>
+  <script>
+    function set_time(num) {
+      // 桁数が1桁の場合は先頭に0を加えて、2桁になるように調整する
+      let ret;
+      // retは結果を受け取る値
+      if(num < 10) 
+        ret = "0" + num; 
+      else 
+        ret = num; 
+      return ret;
+    }
+    
+    function show_Clock() {
+      // 現在時刻を格納するDateオブジェクトを作成
+      let nowTime = new Date(); // 現在日時を得る
+      let nowHour = set_time( nowTime.getHours() ); //時間を抜き出す
+      let nowMin  = set_time( nowTime.getMinutes() ); //分の部分を抜き出す
+      let nowSec  = set_time( nowTime.getSeconds() ); //秒の部分を抜き出す
+      // 時計として、表示する文字列を作成する
+      let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+      // 文字列を時間に書きかえる
+      document.getElementById("realtime").innerHTML = msg;
+    }
+    // 1秒ごとに更新する時計にするために、setInterval()メソッドで第二引数に1000ミリ秒を渡すことによって実現
+    setInterval('show_Clock()',1000);
+  </script>
+</head>
+
+<body>
+  <p class="realtime" id="realtime"></p>
+  <form method="post" action="finish.php">
+    <input type="submit" name="finish" value="退勤">
+  </form>
+</body>
+
+</html>

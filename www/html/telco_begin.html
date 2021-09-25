@@ -2,13 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>現在時刻</title>
+  <title>出勤打刻</title>
+  <style>
+  .realtime {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  </style>
   <script>
     function set_time(num) {
-      // 桁数が1桁の場合は先頭に0を加えて2桁になるように調整する
+      // 桁数が1桁の場合は先頭に0を加えて、2桁になるように調整する
       let ret;
       // retは結果を受け取る値
-      if( num < 10 ) 
+      if(num < 10) 
         ret = "0" + num; 
       else 
         ret = num; 
@@ -32,7 +38,7 @@
 </head>
 
 <body>
-  <p id="realtime"></p>
+  <p class="realtime" id="realtime"></p>
   <form method="post" action="begin.php">
     <input type="submit" name="begin" value="出勤">
   </form>

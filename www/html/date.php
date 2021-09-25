@@ -8,14 +8,3 @@ $w = Week()[date("w")];
 //全て表示
 echo date("Y/m/d($w)");
 ?>
-
-
-<?php
-function Week(){
-    return array('日', '月', '火', '水', '木', '金', '土');
-}
-
-$w = Week()[date("w")];
-
-echo date("Y/m/d($w)");
-?>
