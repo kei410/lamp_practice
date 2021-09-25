@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script>
+  var num;
+  // 加算
+  num = 3 + 3; // 6
+  document.write('<p>3 + 3 = ' + num + '</p>');
+  // 減算
+  num = 5 - 3; // 2
+  document.write('<p>5 - 3 = ' + num + '</p>');
+  // 乗算
+  num = 2 * 3; // 6
+  document.write('<p>2 * 3 = ' + num + '</p>');
+  // 除算
+  num = 9 / 3; // 3
+  document.write('<p>9 / 3 = ' + num + '</p>');
+  // 剰余
+  num = 9 % 5; // 4
+  document.write('<p>9 % 5 = ' + num + '</p>');
+</script>
+</body>
+</html>
+
+<!-- 100円のりんご1個と150円のグレープを1個購入した際の合計金額を計算し表示してください。 -->
+<body>
+    <script>
+        var apple = 100;
+        var grape = 150;
+        /* 以下に「合計: 648」と表示されるよう計算処理を追加する*/
+        var apple = 100 * 1.08;
+        var grape = 150 * 1.08;
+        var sum = 3 * apple + 2 * grape
+        document.write('合計：' + sum + '<br>');
+        document.write('合計：' + (3 * apple + 2 * grape)); //sumを使わずに直接計算する場合（計算の順序に注意する）
+    </script>
+    </script>
+</body>
+
+
+<script>
+    // 0〜100のランダムな数字を取得
+    var rand = Math.floor(Math.random() * 101);
+    document.write('<p>rand: ' + rand + '</p>');
+    if (rand >= 80) {
+      document.write('<p>randは80以上</p>');
+    } else if (rand <= 30) {
+      document.write('<p>randは30以下</p>');
+    } else {
+      document.write('<p>randは30より大きく80より小さい</p>');
+    }
+  </script>
+
+
+<body>
+  <script>
+    var rand1 = Math.floor(Math.random() * 101);
+    var rand2 = Math.floor(Math.random() * 101);
+    var sum = rand1 + rand2;
+    document.write('<p>rand1: ' + rand1 + '</p>');
+    document.write('<p>rand2: ' + rand2 + '</p>');
+    document.write('<p>sum: ' + sum + '</p>');
+    // 合計が160以上またはrand1かrand2が100
+    if (sum >= 160 || rand1 === 100 || rand2 === 100) {
+      document.write('<p>特待生</p>');
+    // 合計が120以上かつrand1とrand2が40以上
+    } else if (sum >= 120 && rand1 >= 40 && rand2 >= 40) {
+      document.write('<p>合格</p>');
+    // 合計が110以上
+    } else if (sum >= 110) {
+      document.write('<p>補欠合格</p>');
+    // 条件外
+    } else {
+      document.write('<p>不合格</p>');
+    }
+  </script>
+  </body>
+  
+
+<script>
+    var rand1 = Math.floor(Math.random() * 101);
+    var rand2 = Math.floor(Math.random() * 101);
+    var sum = rand1 + rand2;
+
+    var rand1 = Matg.floor(Math.random() * 101);
+    var rand2 = Math.floor(Math.random() * 101);
+    var sum = rand1 + rand2;
+
+    // 合計が160以上またはrand1かrand2が100
+    if (sum >= 160 || rand1 === 100 || rand2 === 100) {
+      document.write('<p>特待生</p>');
+    // 合計が120以上かつrand1とrand2が40以上
+    } else if (sum >= 120 && rand1 >= 40 && rand2 >= 40) {
+      document.write('<p>合格</p>');
+    // 合計が110以上
+    } else if (sum >= 110) {
+      document.write('<p>補欠合格</p>');
+    // 条件外
+    } else {
+      document.write('<p>不合格</p>');
+    }
+
+
+    if (sum >= 160 || rand1 === 100 || rand2 === 100) {
+      document.write('<p>特待生</p>');
+    } else if (sum >= 120 && rand1 >= 40 && rand2 >= 40) {
+      document.write('');
+
+    }
+</script>
+
+
+
+
+
+
+<script>
+  var rand1 = Math.floor(Math.random() * 101);
+  var rand2 = Math.floor(Math.random() * 101);
+  var rand3 = Math.floor(Math.random() * 101);
+  var max = Math.max(rand1, rand2, rand3);
+  document.write('<p>rand1: ' + rand1 + '</p>');
+  document.write('<p>rand2: ' + rand2 + '</p>');
+  document.write('<p>rand3: ' + rand3 + '</p>');
+  document.write('<p>一番大きい数値： ' + max + '</p>');
+</script>
+
+<script>
+  var rand1 = Math.floor(Math.random() * 101);
+  var rand2 = Math.floor(Math.random() * 101);
+  var rand3 = Math.floor(Math.random() * 101);
+  var max = math.max(rand1, rand2, rand3);
+  document.write('<p>rand1:' + rand1 + '</p>');
+</script>
+
+<script>
+  var sum = 0;
+  for (var i = 3; i <= 100; i+=3) {     //()の条件が真のときだけ、{}内のプログラムが実行される
+      sum += i;
+  }
+  document.write(sum);
+</script>
+
+<script>
+  var sum = 0;
+  for (var i =3; i <= 100; i+=3) {
+    sum += i;
+  }
+
+  var sum = 0;
+  for (var i = 3; i <= 100; ) {
+    sum += i;
+
+  }
+</script>
+

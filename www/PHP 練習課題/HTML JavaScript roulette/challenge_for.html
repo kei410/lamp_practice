@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>for課題1 3の倍数</title>
+</head>
+
+<body>
+    <script>
+        //1=100までの3の倍数の和
+        var sum = 0;
+        //合計を足していく変数を定義する
+        var i = 1;
+        while(i <= 100) {   //iが100以下のときは{}で囲われている処理をする
+        if (i % 3 === 0) {  //もし3で割った余りが0のときは{}の処理をする
+            sum += i;　　//sumにiを足す
+        }　　//ifの}が来たので、条件による処理分岐終わり
+        i += 1;
+        }    // }が来たので、whileにまた戻る
+        document.write(sum);
+    </script>
+</body>
+
+</html>
+
+
+<!-- console.log(sum); でもOK
+
+[別解]
+3の倍数だけを足していくので、[3,6,9,....,99]
+を足すと考えてもOK。
+
+    <script>
+        var sum = 0;
+        for (var i = 3; i <= 100; i+=3) {     //()の条件が真のときだけ、{}内のプログラムが実行される
+            sum += i;
+        }
+        console.log(sum);
+    </script>
+
+    <script>
+        var sum = 0;　 //sumは0スタート
+        for (var i = 1; i <= 100; i++) {
+        
+        if (i % 3 === 0) {
+            sum += i;    //sum + = i とsum = sum + iは同じ意味
+        }　　 
+        }
+        document.write(sum);
+        //1から100までの間で、3の倍数の数だけを足した合計値(1683)を表示する
+    </script>
+-->

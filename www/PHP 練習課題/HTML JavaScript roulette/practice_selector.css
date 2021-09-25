@@ -1,0 +1,62 @@
+article {
+    width:500px;
+    margin:0 auto;
+    background-color:#ccc;
+    padding:20px;
+}
+
+h1 {
+    font-size:30px;
+}
+.restaurants {
+    border:solid 5px #f00;
+}
+
+section  {
+    margin-bottom:20px;
+    padding:20px;
+}
+
+.dish {
+    border:solid 5px #00f;
+}
+
+ul {
+    list-style-type:square;
+}
+
+.woman {
+    background-color:#ffb6c1;
+}
+
+.family {
+    color:#f00;
+}
+
+.star {
+    color:#ff0;
+}
+
+dt {
+    border-bottom:dotted 3px #0af;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:10px;
+    border-left:10px solid #0c4da2;
+    
+}
+
+.text  { 
+    background-color:#ddd;
+}
+
+h2 {
+    font-size:25px;
+}
+
+
+/*--CSSセレクタ　課題2
+黄色い三角マークが出たときは気にしなくていいが、英文の意味を必ず理解しておく
+赤い×印マークが出た場合はすぐ解決することが重要
+articleとsectionで途中まで作成しました
+classやidをどの部分に使えばいいかわかりません*/

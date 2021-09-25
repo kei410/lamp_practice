@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>while課題1</title>
+</head>
+<body>
+  <script>
+    //合計値をいれる                     
+    var sum = 0;
+    var i = 0;
+    //和が1000を超えるまで、繰り返し処理を行う
+    while (sum < 1000) {      //sum = 990; i = 45;　　　15~17行目はループが終わる直前のときを考えている
+      i++;            //iに１を加える sum = 1035; i = 46;
+      sum += i;       //sumにiを加える sum = 1035; i = 45;
+    }
+    //足される数値
+    document.write(i + '<br>');　 //結果45
+    //合計値
+    document.write(sum);          //結果1035
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>for課題2 2000年から本日までの年を全て表示</title>
+</head>
+<body>
+<script>
+// 現在日時を取得
+var date = new Date();　//秒まで取得できる
+// 現在日時から「年」のみを取得
+// dateオブジェクトから西暦のみを取るのがgetFullYeaメソッドの役割
+var year = date.getFullYear(); //2020がyaerに入る
+var i =2000;
+while (i <= year) {
+document.write('<p>' + i + '</p>');
+i++;
+}
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script>
+  var i = 0;
+  while (i < 10) {
+    document.write(i);
+    i++;
+  }
+</script>
+</body>
+</html>
+
+

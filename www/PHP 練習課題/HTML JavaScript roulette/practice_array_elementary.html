@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>配列　課題3</title>
+</head>
+<body>
+  <script>
+    var data = [59, 39, 100, 2, 15, 40, 84, 97];　 //配列の結合を利用するやり方
+    var count = []; //40未満の数字が入る変数を作りたい
+    for (var i = 0; i < data.length; i++) {
+      document.write(data[i] + '<br>');
+      if (data[i] < 40) {
+        count.push(data[i]);
+      }
+    }
+    document.write('<p>40点未満の人は' + count.length + '人です</p>');
+  </script>
+</body>
+</head>
+
+
+<!-- やや難しいやり方
+<script>
+        var datas = [59, 39, 100, 2, 15, 40, 84, 97];
+        for (var i = 0; i < datas.length; i++) {
+            document.write(datas[i]+ '<br>'); 
+        }
+
+        document.write ('<p>40点未満の人は' + 
+            datas.filter(
+                function(data){
+                    return (data<40);
+                }
+            ).length + '人です</p>'); 
+
+</script>-->
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>array 課題2</title>
+    <script>
+        var data = [59, 39, 100, 2, 15, 40, 84, 97];
+        document.write(data[2] + '+' + data[5] + '=' + (data[2] + data[5]));
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+
+
+
+

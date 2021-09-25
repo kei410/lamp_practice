@@ -16,12 +16,18 @@ define('IMAGE_PATH', '/assets/images/');
 define('STYLESHEET_PATH', '/assets/css/');
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );
 
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'ec_site');
+define('DB_USER', 'root');
+define('DB_PASS', 'OBATA%410&kei');
+define('DB_CHARSET', 'utf8');
+
 // MySQL接続用
-define('DB_HOST', 'mysql');
+/* define('DB_HOST', 'localhost');
 define('DB_NAME', 'sample');
 define('DB_USER', 'testuser');
-define('DB_PASS', 'password');
-define('DB_CHARSET', 'utf8');
+define('DB_PASS', 'password'); */
 
 // URL
 define('SIGNUP_URL', '/signup.php');

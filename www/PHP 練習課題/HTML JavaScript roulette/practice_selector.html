@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <title>challenge_box</title>
+   <link rel="stylesheet" href="practice_selector.css">
+</head>
+<body>
+   <article>
+      <h1>私のおすすめレストラン</h1>
+      <section class="restaurants">
+         <h2>おすすめレストラン一覧</h2>
+         <p>私が今までに利用したレストランの中からおすすめのお店を紹介します</p>
+         <ul>
+            <li>レストランA</li>
+            <li class="woman family">レストランB</li>
+            <li class="woman">レストランC</li>
+            <li>レストランD</li>
+            <li class="family">レストランE</li>
+         </ul>
+         <p class="text"><span class="woman">ピンク</span>の背景色のレストランは女性に特におすすめです<br>
+         <span class="family">赤</span>の文字色はファミリー向けのお店です</p>
+      </section>
+      
+      <section class="dish">
+         <h2>各レストランのおすすめ料理</h2>
+         <dl>
+            <dt>レストランA</dt>
+            <dd>フレンチトースト</dd>
+            <dt>レストランB<span class="star">&#9733;</span></dt>
+            <dd>パンケーキ</dd>
+            <dt>レストランC</dt>
+            <dd>シーザーサラダ</dd>
+            <dt>レストランD<span class="star">&#9733;</span></dt>
+            <dd>ハンバーグ</dd>
+            <dt>レストランE</dt>
+            <dd>ミートスパゲッティ</dd>
+          </dl>
+          <p class="text"><span class="star">&#9733;</span>は雑誌で紹介されたお料理です</p>
+       </section>
+    </article>
+</body>
+</html>
+
+
+<!--CSSセレクタ　課題2
+星マークなどの特殊文字は、直接入力するとバグる可能性あり　星マークは&#9733; で入力する
+articleとsectionで途中まで作成しました
+h1やh2は問題ないが、p1やp2などはダメ
+classやidをどの部分で使えばいいかわかりません-->

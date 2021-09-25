@@ -1,0 +1,58 @@
+div {
+  width:600px;
+  margin:0 auto;
+  border:solid 3px orange;
+  padding :20px;
+}
+
+ul {
+  list-style-type:none;
+  display:block;
+}
+
+h2 {
+  background-color:orange;
+  padding:10px;
+  margin:0px;
+}
+
+dl {
+  border:solid 1px orange;
+  padding:10px;
+  margin-top:0;
+}
+
+dt {
+  border-bottom:dotted 1px orange;
+}
+
+a {
+  text-decoration:none;
+  background-color:orange;
+  display :block;
+  text-align:center;
+  font-weight:bold;
+  padding:5px;
+}
+
+p {
+  border:solid 1px orange;
+  margin-top:0px;
+  padding:10px;
+}
+
+span {
+  color:#f00a0dc;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+/*3章CSSブロック　課題2
+最初にdivで大枠をつくる
+まずは、外側から形を整えていくとうまくいく
+divはブロックとしては意味がない弁当箱のようなもの
+spanは文章中の一部のみに適用するとき使う
+ブラウザで開いて(pop out into new window)、右クリックで検証を押すと自分でエラーなど
+をチェックできるので便利
+*/

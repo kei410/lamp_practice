@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        var apple = 100;
+        var grape = 150;
+        /* 以下に「合計: 250」と表示されるよう計算処理を追加 */
+        var sum = apple + grape
+        document.write('合計：' + sum + '<br>');
+        document.write('合計：' + (apple + grape)); //sumを使わずに直接計算する場合（計算の順序に注意する）
+    </script>
+</body>
+</html>
+
+<!--演算子の課題
+EditのCode formattingできれいにしておく
+document.writeよりもconsole.logの方が便利-->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        var apple = 100;
+        var grape = 150;
+        /* 以下に「合計: 648」と表示されるよう計算処理を追加する*/
+        var apple = 100 * 1.08;
+        var grape = 150 * 1.08;
+        var sum = 3 * apple + 2 * grape
+        document.write('合計：' + sum + '<br>');
+        document.write('合計：' + (3 * apple + 2 * grape)); //sumを使わずに直接計算する場合（計算の順序に注意する）
+    </script>
+</body>
+</html>
+
+
+<!--課題
+document.writeとconsole.logはconsole.logの方が便利である
+-->

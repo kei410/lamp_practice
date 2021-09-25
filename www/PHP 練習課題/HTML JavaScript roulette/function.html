@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>func 課題1</title>
+</head>
+
+<body>
+  <script>
+    // 税抜き価格を定義
+    var price = 100;
+    // 税込み価格を計算
+    var price_inc_tax = including_tax(price);
+    // 税込み価格を書き出し
+    document.write('税込み価格は' + price_inc_tax + 'です');
+    // 税込み価格を計算する関数including_taxを作成する
+    function including_tax(price) {
+      return parseInt(price * 1.1, 10);
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  // ユーザー定義関数 1
+  function output_hello(){
+    document.write('<p>output_hello関数: hello</p>');
+  }
+  // ユーザー定義関数 2
+  function output_hello_name(name){
+    document.write('<p>output_hello_name関数: hello ' + name + '</p>');
+  }
+  // ユーザー定義関数 3
+  function make_hello_name(name){
+    var str = '<p>make_hello_name関数: hello ' + name + '</p>';
+    return str;
+  }
+ 
+  // output_hello関数(ユーザー定義関数 1)の実行
+  output_hello();
+  // output_hello_name関数(ユーザー定義関数 2)の実行
+  output_hello_name('山田');
+  // make_hello_name関数(ユーザー定義関数 3)の実行
+  var hello_name = make_hello_name('鈴木');
+  document.write(hello_name);
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>function 課題2</title>
+</head>
+
+<body>
+    <script>
+        var data = [59, 39, 100, 2, 15, 40, 84, 97];
+        var ave;
+
+        ave = calc_ave(data);
+
+        function calc_ave(data) {
+            sum = 0;
+            for (i = 0; i < data.length; i++) {
+                sum += data[i]
+            }
+            ave = sum / data.length;
+            return ave;
+        }
+        document.write(ave);
+        // 関数calc_aveを定義　配列dataの平均値を表示するプログラム
+    </script>
+</body>
+</head>
+
+<!--配列の値から平均値を計算する関数calc_aveを作成してください。
+作成した関数は以下に示すサンプルに追記し、配列dataの平均値を表示するプログラム -->
+
+

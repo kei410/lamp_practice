@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script>
+  // 変数(hp)を定義
+  var hp;
+  // 変数hpに値を代入
+  hp = 200;
+  // 変数mpを定義し値に代入
+  var mp = 80;
+  // HPとMPを表示
+  document.write('<p>現在のHPは' + hp + '現在のMPは' + mp + '</p>');
+</script>
+</body>
+</html>
+
+<!--
+上記のプログラム中に // (スラッシュ２つ)から始まる行がありますが、これらはコメントと呼ばれるもので、プログラムの動作には影響しない行になります。
+プログラム作成中のメモや、自分以外の人がプログラムを見る際の参考用に記述しましょう。
+作成したプログラムの「hp」と「mp」が変数です。document.write( );は、前章で学習した、メソッドという命令です。
+上記のようにdocument.write( );のカッコ内に記述した文字列を、ブラウザの画面上に表示することができます。
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>変数</title>
+</head>
+<body>
+  <script>
+  // 変数hpを定義
+  var hp;
+  // 変数hpに値を代入
+  hp = 120;
+  // 変数mpを定義し値に代入
+  var mp = 0;
+  // HPとMPを表示
+  document.write('<p>現在のHPは' + hp + '現在のMPは' + mp + '</p>');
+  // 変数hpの値を上書き
+  hp = 80;
+  // HPとMPを再度表示
+  document.write('<p>現在のHPは' + hp + '現在のMPは' + mp + '</p>');
+  // 変数mpを上書きする
+  mp = 50;
+  // HPとMPを再度表示
+  document.write('<p>現在のHPは' + hp + '現在のMPは' + mp + '</p>');
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ルーレット</title>
+    <link rel="stylesheet" href="roulette.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var interval_id; // 繰り返しの定義
+        var n; // 1行に入る数字のカウント
+        var i = 1; // マスに入る数字
+        var go = 4; // 行の折り返し位置 ここを変更するだけでマス目等増減可
+        var nums = []; // 出る値の格納場所
+        var ran_num; // ランダムに出てきた値
+        var idx; // 値削除用のキー
+
+        // ボタン操作の監視及びマスの作成
+        $(function() {
+            // 各ボタンの監視
+            $('.start').click(pre_start);
+            $('.stop').click(stop_r);
+            $('.reset').click(reset_r);
+
+            // trの作成 ※goの値で作成数自動変更
+            for (n = 1; n <= go; n++) {
+                // cellの要素を取得しtableタグの後ろにtrを追加
+                $('#matrix').append("<tr id='target'>");
+                // trタグのid名を変数を使用して変更
+                $('#target').attr('id', 'tr' + n);
+
+                // 各行の折り返し位置
+                var j = n * go;
+
+                // マスの数字作成 ※goの値で自動追加
+                while (i <= j) {
+                    $('#' + 'tr' + n).append("<td id='target_td' class='case1'>" + i + '</td>');
+                    $('#target_td').attr('id', 'td' + i);
+                    i++;
+                }
+            }
+            // 1~16の出る値全てをtdから取得し配列numsに格納 ※goの値で範囲自動変更
+            $('tr').each(function() {
+                $('td', this).each(function() {
+                    nums.push($(this).text());
+                });
+            });
+        });
+
+        // 繰り返し時間の設定
+        function pre_start() {
+            $('.start').prop('disabled', true); // スタートボタン使用不可に変更
+            $('.stop').prop('disabled', false); // ストップボタン使用可に変更
+            clearInterval(interval_id); // 二重クリック防止
+            // タイマーセット
+            interval_id = setInterval(start_r, 50);
+            // td背景色の変更
+            $('#' + 'td' + ran_num).addClass('case4');
+        }
+
+        // スタートボタンの動作
+        function start_r() {
+            // td背景色の変更
+            $('#' + 'td' + ran_num).removeClass('case2');
+            $('#' + 'td' + ran_num).addClass('case1');
+
+            // 配列内からランダムに値を抽出
+            ran_num = nums[Math.floor(Math.random() * nums.length)];
+
+            // td背景色の変更
+            $('#' + 'td' + ran_num).addClass('case2');
+        }
+
+        // ストップボタンの動作
+        function stop_r() {
+            clearInterval(interval_id); // タイマーを止める
+            $('.stop').prop('disabled', true); // ストップボタン使用不可に変更
+            $('.start').prop('disabled', false); // スタートボタン使用可に変更
+            // 止まったマスの背景色を変更
+            $('#' + 'td' + ran_num).addClass('case3');
+            // 同じ値が出ないように出た値をnumsから削除
+            idx = $.inArray(ran_num, nums);
+            nums.splice(idx, 1);
+
+            // 全値が出た時の動作
+            if (nums.length < 1) {
+                $('.start').prop('disabled', true); // スタートボタン使用不可に変更
+            }
+        }
+
+        // リセットボタンの動作
+        function reset_r() {
+            clearInterval(interval_id); // タイマーを止める
+            $('.start').prop('disabled', false); // スタートボタン使用可に変更
+            nums = []; // 値の初期化
+            ran_num = 0; // 値の初期化
+            // 背景色を初期化
+            $('td').removeClass('case1 case2 case3 case4');
+            $('td').addClass('case1');
+            // 出る値全てを配列に再格納
+            $('tr').each(function() {
+                $('td', this).each(function() {
+                    nums.push($(this).text());
+                });
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="roulette">
+        <table id="matrix"></table>
+        <div class="buttons">
+            <button class="start">スタート</button>
+            <button class="stop">ストップ</button>
+            <button class="reset">リセット</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>課題3　九九</title>
+  <style>　　　　　　　　　
+    td {
+      padding: 0 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    document.write(`<table border="1">`);　　　//tdは「table data」の略で、テーブルセルの内容を指定します。セルの内容がデータの場合は、この<td>要素を使用します。
+     //表を作成する際には<tr>～</tr>で表の横部分を指定し、その中に<th>～</th>や<td>～</td>で表題や縦軸を指定してセルを定義します。
+    for (var i = 1; i <= 9; i++) {
+      document.write(`<tr>`);
+      for (var j = 1; j <= 9; j++) {
+        document.write(`<td>${j} * ${i} = ${i * j}</td>`);　//$のような変数を埋め込む場合は、シングルクォートではなくバッククォート`を用いる
+      }
+      document.write(`</tr>`);
+    }
+    document.write(`</table>`);
+  </script>
+
+  <!--<script>
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 1; j <= 9; j++) {
+        document.write(`${i} * ${j} = ${i*j}<br/>`);
+      }
+    }
+  </script> -->
+  
+</body>
+</html>
+
+
+<!--
+<script>
+document.write(`<table><tr>`);
+for (var i = 1; i <= 9; i++){
+for (var j = 1; j <= 9; j++){
+document.write(`<td>${j} * ${i} = ${i * j}</td>`);
+}
+document.write(`</tr>`);
+}
+document.write(`</table>`);
+</script>
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+    var sum = 0;
+    for (var i = 3; i <= 100; i+=3) {     //()の条件が真のときだけ、{}内のプログラムが実行される
+        sum += i;
+    }
+    document.write(sum);
+</script>
+</body>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>for課題2 2000年から本日までの年を全て表示</title>
+</head>
+<body>
+    <script>
+        // 現在日時を取得
+        var date = new Date();　 //秒まで取得できる
+        // 現在日時から「年」のみを取得
+        // dateオブジェクトから西暦のみを取るのがgetFullYeaメソッドの役割
+        var year = date.getFullYear(); //2020がyaerに入る
+        for (var i = 2000; i <= year; i++) {
+            document.write('<p>' + i + '</p>')
+        }
+    </script>
+</body>
+</html>

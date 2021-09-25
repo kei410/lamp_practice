@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>二重ループ文</title>
+</head> 
+
+<body>
+  <script>
+    var classes = ['A組', 'B組', 'C組', 'D組'];
+    for (var grade = 1; grade < 4; grade++) {　　//初めのfor文でgradeが1から3まで(1~3年)でループする
+      for (var i = 0; i < classes.length; i++) { 　//1学年の数、4回ループを行う (配列の数だけループする)
+        document.write('<p>' + grade + '年' + classes[i] + '</p>')
+      }    //つまり、3×4=12回ループする
+    }      //まずgradeの1から入って、iがDになるまでループしてから、gradeのループが1回終了する
+    　　　 //そしてまた2年～の流れでループしていく
+    　　　 
+  </script>
+</body>
+
+</html>
+
+
+<!--
+各学年A~D組まである高校の、1~3年の全クラスのリストを作る
+-->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>if文　チケット</title>
+</head>
+
+<body>
+    <script>
+    var age =16;
+    var isFemale = true;
+    var result = null;
+    
+    if (age <= 15){
+        result = 800;
+    }
+    else if (isFemale) {
+        result = 1000;
+    }
+    else {
+        result = 1800;
+    }
+    document.write(result);
+    </script>
+</body>
+
+</html>
+
+
+<!--問題文
+15歳以下は800円、女性の場合は1000円、そうでない場合は
+1800円の映画のチケットがある。年齢と性別を変数に代入して
+チケットの値段を教えてくれるプログラムを作成しなさい。
+ただし、15歳以下かつ女性の場合には800円となるものとする。
+16歳の女性の値段はどうなるか？-->

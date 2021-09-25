@@ -1,0 +1,208 @@
+body {
+    min-width: 960px;
+    background-color:#dbedf0;
+}
+
+main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header {
+      border-bottom: solid 1px #000;
+      background-color: #fff;
+}
+
+header section div{
+    flex:1;
+}
+
+header form {
+    flex:1;
+    text-align:right;
+}
+
+header a,footer a{
+    display:block;
+}
+
+li {
+    line-height: 1.5;
+    font-size: 18px;
+    border-bottom:dotted 2px #ccc;
+}
+
+header li,footer li{
+     border-right:solid 1px #ccc;
+}
+
+header li,footer li:last-child {
+    border-right:none;
+}
+
+header ul,footer ul {
+    width: 960px;
+    margin: 0 auto;
+    display: flex;
+    list-style-type: none;
+    background-color:#ffa500;
+}
+
+header section {
+    display:flex;
+}
+
+header li,footer li{
+    flex: 1;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: sans-serif;
+    border-radius:20px;
+    background-color:#8bd100;
+    background-image: url(images/icon/dish.png);     
+    background-repeat: no-repeat; 
+    background-position: 16px center;
+    padding: 4px 0 4px 40px;
+    margin-bottom:15px;
+}
+
+figure {
+    flex:1;
+    
+    text-align: center;
+    }
+
+figcaption {
+    font-size:11px;
+    padding-top:10px;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+h3  {
+    color:#CE2143;
+}
+
+nav {
+    width:200px;
+    padding:20px 0px;
+}
+    
+article {
+    padding: 20px;
+    flex: 1;
+}
+
+aside {
+    width:154px;
+    padding :20px 0px;
+}
+
+footer {
+    border-top: solid 1px #000;
+    background-color: #fff;
+    min-width:960px;
+}
+
+footer ul {
+    width: 960px;
+    margin: 0 auto;
+    list-style-type: none;
+    display: flex;
+}
+
+footer li, header li {
+    border-bottom:none;
+}
+
+footer p {
+    text-align:center;
+}
+
+section {
+    background-color: #fff;
+    padding:15px;
+    margin-bottom:25px;
+}
+
+small {
+    width:960px;
+    margin: 0 auto;
+}
+
+nav a {
+    display:block;
+    background-image: url(images/icon/arrow.png);     
+    background-repeat: no-repeat; 
+    background-position: 5px center;
+    padding-left:25px;
+}
+
+a {
+   text-decoration:none;
+}
+
+aside img{
+    margin-bottom:25px;
+}
+
+
+.container {
+    display: flex;
+    width: 960px;
+}
+
+.mainview {
+    width: 960px;
+}
+
+
+.new_recipe {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+
+.block {
+    display: flex;
+}
+
+.contents > p {
+    margin-bottom:1em;
+}
+
+.continued {
+    text-align:right;
+}
+
+.block img {
+    margin-right: 15px;
+}
+
+.continued a {
+    background-image: url(images/icon/arrow.png);     
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    padding-left: 25px;
+}
+
+.navigation {
+    background-color: #fff;
+}
+
+.header_inside {
+    width:960px;
+    margin: 0 auto;
+}
+
+
+/*classはできるだけ多用しないで、最終手段として考えるのがベスト
+紫に点滅しているときは、Ctrlと上矢印のキーで移動可能なので便利
+まずはarticleのコンテンツを整備する*/

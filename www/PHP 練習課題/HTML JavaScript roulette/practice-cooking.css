@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+}
+
+ main, nav, article,aside {
+  border: solid 1px;
+}
+
+header {
+  border-bottom: solid 1px #000000;
+}
+
+div {
+  margin: 0 auto;
+  width:960px;
+}
+
+img {
+  width: 300px;
+}
+
+main {
+  display: flex;
+  width:960px;
+  margin: 0 auto;
+}
+
+nav {
+  flex :1;
+}
+
+footer {
+  border-bottom: solid  1px #000;
+  min-width:960px;
+}
+
+article {
+  flex :4;
+}
+
+aside {
+  flex :3;
+}
+
+
+/*display flexは横並びしたいときに使う
+article、main、section　この3つの使い分けが難しいです。*/

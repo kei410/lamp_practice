@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML課題 ITアンケート</title>
+</head>
+<body>
+  <form action="#">
+    <h1 style="font-size: 25px; color:#f00;">ITアンケート</h1>
+    <p>
+      <label>お名前: <input type="text"></label>
+    </p>   <!--labelを使って分かりやすくする。labelで挟む。idとforを使わずに<input>を<label>タグで囲む方法もある。-->
+    <p>
+      <label>メールアドレス: <input type="email" name="mail"></label>
+    </p>
+    <p>
+      <label>電話番号: <input type="tel" name="tel"></label>
+    </p>
+    <p>
+      <label>ご意見や問い合わせなど: <input type="text" placeholder="ご意見やご質問など"></label>
+    </p>
+    <!-- valueの値には実際にブラウザで表示される文字を入力する-->
+    
+    <p>現在のHTML理解度を教えてください:
+      <!-- 1つだけを選択してもらいたいので、必ず同じname属性を入れる CSS理解度と
+      被らないように識別名は区別している。name属性をつけると1つのグループとしてまとめることができる。-->
+      <label><input type="radio" name="comprehension-1" value="低い">低い</label>
+      <label><input type="radio" name="comprehension-1" value="普通">普通</label>
+      <label><input type="radio" name="comprehension-1" value="高い">高い</label>
+    </p>
+    <p>現在のCSS理解度を教えてください:
+      <label><input type="radio" name="comprehension-2" value="低い">低い</label>
+      <label><input type="radio" name="comprehension-2" value="普通">普通</label>
+      <label><input type="radio" name="comprehension-2" value="高い">高い</label>
+    </p>
+    <p>聞いたことがあるプログラミング言語を選択してください(複数選択可能):  <!--複数選択なのでチェックボックスを使う-->
+      <label><input type="checkbox" name="Programming language" value="C">C</label>
+      <label><input type="checkbox" name="Programming language" value="Java">Java</label>
+      <label><input type="checkbox" name="Programming language" value="PHP">PHP</label>
+      <label><input type="checkbox" name="Programming language" value="Ruby">Ruby</label>
+      <label><input type="checkbox" name="Programming language" value="JavaScript">JavaScript</label>
+    </p>
+    <p><input type="submit" value="送信する"></p>
+  </form>
+</body>
+</html>
+
+
