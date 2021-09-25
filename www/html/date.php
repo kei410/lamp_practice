@@ -19,18 +19,3 @@ $w = Week()[date("w")];
 
 echo date("Y/m/d($w)");
 ?>
-
-.container cf {
-    display:flex;
-}
-
-<input id="name" required>
-<input id="name" required>
-required
-
-<input id="zipcode" pattern="\d{3}-?\d{4}" required>
-
-"\d{2,4}-\d{3,4}-\d{3,4}"
-<input id="age" pattern="" required>
-
-pattern="[\d\-]*" maxlength="11">
